@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B2E41093-2CFC-4964-BE94-EB7A41E05CEB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoUniJob</RootNamespace>
+    <AssemblyName>ProyectoUniJob</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Recursos\BackEnd\css\alertify.core.css" />
+    <Content Include="Recursos\BackEnd\css\alertify.default.css" />
+    <Content Include="Recursos\BackEnd\css\animate.min.css" />
+    <Content Include="Recursos\BackEnd\css\bootstrap.min.css" />
+    <Content Include="Recursos\BackEnd\css\demo.css" />
+    <Content Include="Recursos\BackEnd\css\estilospersonalesmaple.css" />
+    <Content Include="Recursos\BackEnd\css\paper-dashboard.css" />
+    <Content Include="Recursos\BackEnd\css\themify-icons.css" />
+    <Content Include="Recursos\BackEnd\fonts\themify.svg" />
+    <Content Include="Recursos\BackEnd\img\1.jpg" />
+    <Content Include="Recursos\BackEnd\img\2.jpg" />
+    <Content Include="Recursos\BackEnd\img\200_pesos.jpg" />
+    <Content Include="Recursos\BackEnd\img\3.jpg" />
+    <Content Include="Recursos\BackEnd\img\4.jpg" />
+    <Content Include="Recursos\BackEnd\img\5.jpg" />
+    <Content Include="Recursos\BackEnd\img\50pesos.jpg" />
+    <Content Include="Recursos\BackEnd\img\abeja.png" />
+    <Content Include="Recursos\BackEnd\img\angela1995-12-14.png" />
+    <Content Include="Recursos\BackEnd\img\apple-icon.png" />
+    <Content Include="Recursos\BackEnd\img\B.png" />
+    <Content Include="Recursos\BackEnd\img\B2.jpg" />
+    <Content Include="Recursos\BackEnd\img\background.jpg" />
+    <Content Include="Recursos\BackEnd\img\bank.jpg" />
+    <Content Include="Recursos\BackEnd\img\bici.png" />
+    <Content Include="Recursos\BackEnd\img\BillGate.jpeg" />
+    <Content Include="Recursos\BackEnd\img\casa.jpg" />
+    <Content Include="Recursos\BackEnd\img\coche.jpg" />
+    <Content Include="Recursos\BackEnd\img\descarga %282%29.jpg" />
+    <Content Include="Recursos\BackEnd\img\descarga.jpg" />
+    <Content Include="Recursos\BackEnd\img\diez pesos.jpg" />
+    <Content Include="Recursos\BackEnd\img\faces\face-0.jpg" />
+    <Content Include="Recursos\BackEnd\img\faces\face-1.jpg" />
+    <Content Include="Recursos\BackEnd\img\faces\face-2.jpg" />
+    <Content Include="Recursos\BackEnd\img\faces\face-3.jpg" />
+    <Content Include="Recursos\BackEnd\img\favicon.png" />
+    <Content Include="Recursos\BackEnd\img\fondo.jpg" />
+    <Content Include="Recursos\BackEnd\img\hipolito1995-07-12.png" />
+    <Content Include="Recursos\BackEnd\img\isaias1998-04-12.png" />
+    <Content Include="Recursos\BackEnd\img\juanito1996-04-07.png" />
+    <Content Include="Recursos\BackEnd\img\kindred-shadowfire.jpg" />
+    <Content Include="Recursos\BackEnd\img\Logo2.0.png" />
+    <Content Include="Recursos\BackEnd\img\logo_plenumsoft_cabecera.png" />
+    <Content Include="Recursos\BackEnd\img\MIguel Maple1998-07-04.png" />
+    <Content Include="Recursos\BackEnd\img\Mision.png" />
+    <Content Include="Recursos\BackEnd\img\miss-fortune-star-guardian.jpg" />
+    <Content Include="Recursos\BackEnd\img\new_logo.png" />
+    <Content Include="Recursos\BackEnd\img\PROYECTO Jhin.jpg" />
+    <Content Include="Recursos\BackEnd\img\Santiago1995-01-01.png" />
+    <Content Include="Recursos\BackEnd\img\tim_80x80.png" />
+    <Content Include="Recursos\BackEnd\img\vision.jpg" />
+    <Content Include="Recursos\BackEnd\js\alertify.js" />
+    <Content Include="Recursos\BackEnd\js\bootstrap-checkbox-radio.js" />
+    <Content Include="Recursos\BackEnd\js\bootstrap-notify.js" />
+    <Content Include="Recursos\BackEnd\js\bootstrap.min.js" />
+    <Content Include="Recursos\BackEnd\js\chartist.min.js" />
+    <Content Include="Recursos\BackEnd\js\demo.js" />
+    <Content Include="Recursos\BackEnd\js\jquery-1.10.2.js" />
+    <Content Include="Recursos\BackEnd\js\jquery-2.0.3.min.js" />
+    <Content Include="Recursos\BackEnd\js\paper-dashboard.js" />
+    <Content Include="Recursos\FontEnd\css\bootstrap-select.css" />
+    <Content Include="Recursos\FontEnd\css\bootstrap.css" />
+    <Content Include="Recursos\FontEnd\css\clockpicker.css" />
+    <Content Include="Recursos\FontEnd\css\creditly.css" />
+    <Content Include="Recursos\FontEnd\css\easy-responsive-tabs.css" />
+    <Content Include="Recursos\FontEnd\css\fileinput.min.css" />
+    <Content Include="Recursos\FontEnd\css\font-awesome.css" />
+    <Content Include="Recursos\FontEnd\css\jquery-ui.css" />
+    <Content Include="Recursos\FontEnd\css\jquery.seat-charts.css" />
+    <Content Include="Recursos\FontEnd\css\standalone.css" />
+    <Content Include="Recursos\FontEnd\css\star-rating.min.css" />
+    <Content Include="Recursos\FontEnd\css\starrr.css" />
+    <Content Include="Recursos\FontEnd\css\style.css" />
+    <Content Include="Recursos\FontEnd\css\subasta.css" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Recursos\FontEnd\images\1.jpg" />
+    <Content Include="Recursos\FontEnd\images\1.png" />
+    <Content Include="Recursos\FontEnd\images\1calif.png" />
+    <Content Include="Recursos\FontEnd\images\2.jpg" />
+    <Content Include="Recursos\FontEnd\images\2.png" />
+    <Content Include="Recursos\FontEnd\images\3.png" />
+    <Content Include="Recursos\FontEnd\images\4.jpg" />
+    <Content Include="Recursos\FontEnd\images\4.png" />
+    <Content Include="Recursos\FontEnd\images\5.jpg" />
+    <Content Include="Recursos\FontEnd\images\5.png" />
+    <Content Include="Recursos\FontEnd\images\buttonA_off.jpg" />
+    <Content Include="Recursos\FontEnd\images\buttonA_on.jpg" />
+    <Content Include="Recursos\FontEnd\images\cal.png" />
+    <Content Include="Recursos\FontEnd\images\cus.jpg" />
+    <Content Include="Recursos\FontEnd\images\lg.png" />
+    <Content Include="Recursos\FontEnd\images\lg1.png" />
+    <Content Include="Recursos\FontEnd\images\lg2.png" />
+    <Content Include="Recursos\FontEnd\images\lg3.png" />
+    <Content Include="Recursos\FontEnd\images\lg4.png" />
+    <Content Include="Recursos\FontEnd\images\lg5.png" />
+    <Content Include="Recursos\FontEnd\images\lg6.png" />
+    <Content Include="Recursos\FontEnd\images\lg7.png" />
+    <Content Include="Recursos\FontEnd\images\lg8.png" />
+    <Content Include="Recursos\FontEnd\images\lg9.png" />
+    <Content Include="Recursos\FontEnd\images\logo verde.png" />
+    <Content Include="Recursos\FontEnd\images\logopr.jpeg" />
+    <Content Include="Recursos\FontEnd\images\m1.jpg" />
+    <Content Include="Recursos\FontEnd\images\Mision.png" />
+    <Content Include="Recursos\FontEnd\images\Mision1.jpg" />
+    <Content Include="Recursos\FontEnd\images\mobile.png" />
+    <Content Include="Recursos\FontEnd\images\movie-poster.jpg" />
+    <Content Include="Recursos\FontEnd\images\movie-show.jpg" />
+    <Content Include="Recursos\FontEnd\images\offer-bg.jpg" />
+    <Content Include="Recursos\FontEnd\images\paypal.png" />
+    <Content Include="Recursos\FontEnd\images\ph1.png" />
+    <Content Include="Recursos\FontEnd\images\rating-153125_1280.png" />
+    <Content Include="Recursos\FontEnd\images\seat2.jpg" />
+    <Content Include="Recursos\FontEnd\images\top-arrow.png" />
+    <Content Include="Recursos\FontEnd\images\universitarios.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios2.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios3.jpg" />
+    <Content Include="Recursos\FontEnd\images\universitarios4.jpg" />
+    <Content Include="Recursos\FontEnd\js\bootstrap-select.js" />
+    <Content Include="Recursos\FontEnd\js\bootstrap.js" />
+    <Content Include="Recursos\FontEnd\js\clockpicker.js" />
+    <Content Include="Recursos\FontEnd\js\contact_me.js" />
+    <Content Include="Recursos\FontEnd\js\creditly.js" />
+    <Content Include="Recursos\FontEnd\js\easing.js" />
+    <Content Include="Recursos\FontEnd\js\easyResponsiveTabs.js" />
+    <Content Include="Recursos\FontEnd\js\fileinput.min.js" />
+    <Content Include="Recursos\FontEnd\js\jqBootstrapValidation.js" />
+    <Content Include="Recursos\FontEnd\js\jquery-1.7.1.min.js" />
+    <Content Include="Recursos\FontEnd\js\jquery-2.2.3.min.js" />
+    <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
+    <Content Include="Recursos\FontEnd\js\jquery.seat-charts.js" />
+    <Content Include="Recursos\FontEnd\js\locationpicker.jquery.js" />
+    <Content Include="Recursos\FontEnd\js\move-top.js" />
+    <Content Include="Recursos\FontEnd\js\responsiveslides.min.js" />
+    <Content Include="Recursos\FontEnd\js\starrr.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
+    <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
+    <Compile Include="Controllers\BackEnd\CategoriasYTiposController.cs" />
+    <Compile Include="Controllers\BackEnd\InformacionController.cs" />
+    <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
+    <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
+    <Compile Include="Controllers\EstatusController.cs" />
+    <Compile Include="Controllers\FrontEnd\DateTable.cs" />
+    <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
+    <Compile Include="Controllers\FrontEnd\TareasController.cs" />
+    <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoUsuarioDAO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Recursos\BackEnd\fonts\themify.eot" />
+    <Content Include="Recursos\BackEnd\fonts\themify.ttf" />
+    <Content Include="Recursos\BackEnd\fonts\themify.woff" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_buttons.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_cards.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_chartist.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_icons.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_inputs.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_labels.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_navbars.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_sidebar.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_tabs.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_transparency.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\mixins\_vendor-prefixes.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_alerts.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_buttons.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_cards.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_chartist.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_checkbox-radio.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_dropdown.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_footers.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_inputs.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_misc.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_mixins.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_navbars.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_responsive.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_sidebar-and-main-panel.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_tables.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_typography.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper\_variables.scss" />
+    <Content Include="Recursos\BackEnd\sass\paper-dashboard.scss" />
+    <Content Include="Views\BackEnd\MasterPage\_layoutBackEnd.cshtml" />
+    <Content Include="Views\BackEnd\AdminPrincipal.cshtml" />
+    <Content Include="Views\Prueba\Index.cshtml" />
+    <Content Include="Views\BackEnd\TablaEstatus.cshtml" />
+    <Content Include="Views\BackEnd\AgregarEstatus.cshtml" />
+    <Content Include="Views\FrontEnd\MasterPage\_layoutFrontEnd.cshtml" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.eot" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.woff" />
+    <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\FontAwesome.otf" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\Montserrat-Regular.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\OpenSans-Regular.ttf" />
+    <Content Include="Recursos\FontEnd\fonts\Oxygen-Regular.ttf" />
+    <Content Include="Views\AgregarEstudiante\Index.cshtml" />
+    <Content Include="Views\Usuario\Redireccionar.cshtml" />
+    <Content Include="Views\Usuario\IndexEmpleador.cshtml" />
+    <Content Include="Views\Usuario\IndexEstudiante.cshtml" />
+    <Content Include="Views\FrontEnd\MasterPage\_layoutUsuarios.cshtml" />
+    <Content Include="Views\Tareas\TodasTareas.cshtml" />
+    <Content Include="Views\Usuario\VerPerfil.cshtml" />
+    <Content Include="Views\Tareas\TareasAcepUsuario.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\PerfilAdmin\DatosPerfil.cshtml" />
+    <Content Include="Views\AgregarEstudiante\mostartabla.cshtml" />
+    <Content Include="Views\AgregarEstudiante\EditarDatos.cshtml" />
+    <Content Include="Views\AprobarTarea\Index.cshtml" />
+    <Content Include="Views\AprobarTarea\DatosTarea.cshtml" />
+    <Content Include="Views\Tareas\ListarTipoTarea.cshtml" />
+    <Content Include="Views\MesajesAdm\Index.cshtml" />
+    <Content Include="Views\MesajesAdm\lol.cshtml" />
+    <Content Include="Views\Tareas\Index.cshtml" />
+    <Content Include="Views\Tareas\TareaAceptSeleccionada.cshtml" />
+    <Content Include="Views\PrincipalFE\Index.cshtml" />
+    <Content Include="Views\CategoriasYTipos\AgregarCategoria.cshtml" />
+    <Content Include="Views\CategoriasYTipos\tablacategorias.cshtml" />
+    <Content Include="Views\CategoriasYTipos\tablausuarios.cshtml" />
+    <Content Include="Views\Tareas\TareaSeleccionada.cshtml" />
+    <Content Include="Views\Tareas\VistaTarea.cshtml" />
+    <Content Include="Views\CategoriasYTipos\TablaActualizarCategoria.cshtml" />
+    <Content Include="Views\CategoriasYTipos\actualizarcategoria.cshtml" />
+    <Content Include="Views\Informacion\Index.cshtml" />
+    <Content Include="Views\Tareas\FinalizarTarea.cshtml" />
+    <Content Include="Views\Usuario\mesajesusuarios.cshtml" />
+    <Content Include="Views\Tareas\TareasEmpleador.cshtml" />
+    <Content Include="Views\Informacion\PaginaPrincipal.cshtml" />
+    <Content Include="Views\Tareas\TodasTareasEmpleador.cshtml" />
+    <Content Include="Views\Tareas\FiltroTareas.cshtml" />
+    <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
+    <Content Include="Views\Tareas\Filtro.cshtml" />
+    <Content Include="Views\Tareas\VistaCAlif.cshtml" />
+    <Content Include="Views\Prueba\pruebaPostulados.cshtml" />
+    <Content Include="Views\Prueba\pruebadistancias.cshtml" />
+    <Content Include="Views\Prueba\boton.cshtml" />
+    <Content Include="Views\Prueba\sessioncoordenadas.cshtml" />
+    <Content Include="Views\Usuario\PefilUsuarioTareas.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Reportes\DataSets\" />
+    <Folder Include="Reportes\Viewers\" />
+    <Folder Include="Views\Reportes\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\TipoUsuario\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BO\BO.csproj">
+      <Project>{a92d3e29-0cf1-4f9e-89fe-2e7e46fc8cc9}</Project>
+      <Name>BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{e18ef0d7-2b0b-47b9-b9fa-433346c67503}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59538</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59538/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
