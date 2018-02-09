@@ -350,6 +350,13 @@ namespace DAO
 
         //metodos para la vista donde el empleador ve el perfil del alumno
 
-
+        public DataTable TopEstudiantes()
+        {
+            sentencia = "SELECT TOP (5) (US.Nombre + ' ' + US.Apellidos) AS 'Estudiante', AVG(Calif.Calificacion) AS 'Promedio' FROM Calificaciones Calif INNER JOIN Usuarios US ON Calif.CodigoCalificado = US.Codigo WHERE Calif.CodigoCalificado IN (SELECT US.Codigo FROM Usuarios US WHERE US.TipoUs = 3) GROUP BY Calif.CodigoCalificado, US.Nombre, US.Apellidos ORDER BY AVG(Calif.Calificacion)DESC";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
     }
 }

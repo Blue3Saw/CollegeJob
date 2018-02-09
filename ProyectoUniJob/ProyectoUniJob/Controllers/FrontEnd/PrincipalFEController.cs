@@ -19,6 +19,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             InformacionDAO Info = new InformacionDAO();                      
             ViewBag.Codigo = Session["Codigo"];
             ViewBag.Informacion = Info.Datos();
+            ViewData["Top"] = ObjUsuario.TopEstudiantes();
             return View();
         }
         
