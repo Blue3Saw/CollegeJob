@@ -41,7 +41,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
             //obj.CodigoEmpleador = 3;// (int)Session["Codigo"]; //Convert.ToInt32(NombreUsu);
 
-           obj.CodigoEmpleador = 3;//int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
+           obj.CodigoEmpleador = int.Parse(Session["Codigo"].ToString()); //Convert.ToInt32(NombreUsu);
 
             obj.Titulo = Titulo;
             obj.Direccion = Direccion;
