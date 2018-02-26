@@ -10,6 +10,7 @@ using System.Net;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Data;
 
 namespace ProyectoUniJob.Controllers.FrontEnd
 {
@@ -182,13 +183,15 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             return PartialView("VistaTarea");
         }
 
-        public ActionResult HacerTarea(string Codigo)
+        [HttpPost]
+        public ActionResult HacerTarea(string Tarea2,string oferta)
         {
             int Estudiante = int.Parse(Session["Codigo"].ToString());
-            int Clave = int.Parse(Codigo);
-            ObjDAO.AceptarTarea(Clave);
-            ObjDAO.AceptarTarea2(Estudiante, Clave);
-            Session["Tarea"] = Codigo;
+            int Clave = int.Parse(Tarea2);
+            int precio = int.Parse(oferta);
+            //ObjDAO.AceptarTarea(Clave);
+            ObjDAO.AceptarTarea2(Estudiante, Clave,precio);
+            //Session["Tarea"] = Codigo;
             return RedirectToAction("IndexEstudiante", "Usuario");
         }
         public ActionResult FinalizarTarea()
@@ -257,9 +260,66 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int ta = int.Parse(Tarea);
             int cod = int.Parse(Codigo);
             int solucion=ObjDAO.Aceptarpostulados(cod,ta);
+
             string pagina = "/Tareas/TareaSeleccionada?Codigo="+ta;
 
             return Redirect("/Tareas/TareaSeleccionada?Codigo=" + ta);
-        }      
+        }
+        
+        //devuelve las tareas a aceptar por parte del usuario
+        public ActionResult AceptartareasEmpleados()
+        {
+            int codigo = int.Parse(Session["Codigo"].ToString());
+            //int codigo = 4;
+            DataTable tareas = ObjDAO.aceptartareasempleador(codigo);
+
+            DataTable tareas2 = new DataTable();
+
+            //creamos las columnas del datatable
+            tareas2.Columns.Add("Titulo");
+            tareas2.Columns.Add("Fecha");
+            tareas2.Columns.Add("Precio");
+            tareas2.Columns.Add("Codigo");
+            foreach (DataRow row in tareas.Rows)
+            {
+                DataRow fila = tareas2.NewRow();
+                fila["Titulo"] = row[0].ToString();
+                fila["Fecha"] = row[1].ToString();
+                fila["Precio"] = row[2].ToString();
+                fila["Codigo"] = row[3].ToString();
+
+                int npos = ObjDAO.NopersonasTareas(int.Parse(row[3].ToString()));
+                int pos = int.Parse(row[4].ToString())+1;
+                if (npos<pos)
+                {
+                    tareas2.Rows.Add(fila);
+                }
+                
+            }
+
+
+
+
+            return View(tareas2);
+        }
+        
+        //saber cuantas personas se pueden postular a las tareas
+        
+        public ActionResult Aceptotarea(string Codigo,string Opcion)
+        {
+            int estudiante= int.Parse(Session["Codigo"].ToString());
+            if (Opcion=="Si")
+            {
+                string estado = "En curso";
+                ObjDAO.AceptoTareaEmpleador(int.Parse(Codigo),estado,estudiante);
+            }
+            else
+            {
+                string estado = "Rechazado";
+                ObjDAO.AceptoTareaEmpleador(int.Parse(Codigo), estado, estudiante);
+            }
+
+            return Redirect("/Usuario/IndexEstudiante#parentHorizontalTab3");
+        }
     }
 }

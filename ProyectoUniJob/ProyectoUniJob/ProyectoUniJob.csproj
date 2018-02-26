@@ -363,6 +363,7 @@
     <Content Include="Views\Prueba\boton.cshtml" />
     <Content Include="Views\Prueba\sessioncoordenadas.cshtml" />
     <Content Include="Views\Usuario\PefilUsuarioTareas.cshtml" />
+    <Content Include="Views\Tareas\AceptartareasEmpleados.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

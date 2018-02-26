@@ -19,6 +19,7 @@
             <ul class="resp-tabs-list hor_1">
                 <li>Mis tareas</li>
                 <li id="tdispo">Tareas disponibles</li>
+                <li id="pestAceptar">Aceptar Tareas</li>
                 <li id="pestMensajes">Mensajes</li>
                 <li id="pestPerfil">Perfil</li>
             </ul>
@@ -64,7 +65,13 @@
 
                     </div>
                 </div>
-                <!--Fin Tareas-->                
+                <!--Fin Tareas--> 
+
+                <!--Pestaña tareas Aceptar-->
+                <div id="Aceptar">
+
+                </div>
+                <!--Fin pestaña Aceptar-->               
 
                 <!--Pestaña mensajes-->
                 <div id="mismensajes">
@@ -77,6 +84,8 @@
                 <div id="perfil">
                 </div>
                 <!--Fin pestaña perfil-->
+
+                
             </div>
         </div>
     </div>
@@ -110,6 +119,7 @@
     })
 </script>
 
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#tdispo').click(function () {
@@ -129,6 +139,13 @@
     $(document).ready(function () {
         $('#pestMensajes').click(function () {
             $('#mismensajes').load('/Usuario/mesajesusuarios');
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#pestAceptar').click(function () {
+            $('#Aceptar').load('/Tareas/AceptartareasEmpleados');
         })
     })
 </script>
