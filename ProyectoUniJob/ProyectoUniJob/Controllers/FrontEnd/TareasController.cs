@@ -203,7 +203,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int Tarea = tarea;
             
             OBO.CodigoTarea = Tarea;
-            OBO.UsCalifica = 1;//int.Parse(Session["codigo"].ToString());
+            OBO.UsCalifica = int.Parse(Session["codigo"].ToString());
             OBO.UsCalificado =empleador;
             OBO.Calificacion = int.Parse(calif);
             OBO.Comentario = comentario;
@@ -220,24 +220,26 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         [HttpPost]
         public ActionResult EnviarCorreo()
         {
-            string CorreoRemitente = "";
-            string CorreoDestinatario = "";
+            DAO.UsuariosDAO User = new UsuariosDAO();
+            UsuarioBO Usuario = User.PerfilUsuario(int.Parse(Session["codigo"].ToString()));
+            string CorreoRemitente = "collegeJobSGM@gmail.com";
+            string CorreoDestinatario = Usuario.Email;
             MailMessage Correo = new MailMessage();
             Correo.To.Add(new MailAddress(CorreoDestinatario));
             Correo.From = new MailAddress(CorreoRemitente);
             Correo.Subject = "Mensajes de prueba..";
-            Correo.Body = "Prueba 1";
+            Correo.Body = "Prueba 1  <a href='http://localhost:59538/Tareas/VistaCAlif'><img src='http://noeliareginelli.com/wp-content/uploads/2017/10/boton-clic-aqui.png' width='120px'/></a>";
             Correo.IsBodyHtml = true;
             Correo.Priority = MailPriority.Normal;
             SmtpClient Cliente = new SmtpClient();
             Cliente.Host = "smtp.gmail.com";
             Cliente.Port = 587;
             Cliente.EnableSsl = true;
-            Cliente.Credentials = new NetworkCredential("","");
+            Cliente.Credentials = new NetworkCredential("collegeJobSGM@gmail.com", "SGM123456");
             try
             {
                 Cliente.Send(Correo);
-                return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab3");
+                return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab5");
             }
             catch 
             {
