@@ -80,12 +80,13 @@ namespace DAO
             return Conex.EjecutarComando(SentenciaSQL);
         }
 
-        public int AceptarTarea2(int CodigoE, int CodigoT)
+        public int AceptarTarea2(int CodigoE, int CodigoT,int oferta)
         {
             TareasBO Dato = new TareasBO();
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO UsuariosTareas (CodigoEstudiante, CodigoTarea, Fecha) VALUES (@CodigoE, @CodigoT, @Fecha)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO UsuariosTareas (CodigoEstudiante, CodigoTarea, Fecha,Precio,estado,CE) VALUES (@CodigoE, @CodigoT, @Fecha,@Precio,'Aceptar',0)");
             SentenciaSQL.Parameters.Add("@CodigoE", SqlDbType.Int).Value = CodigoE;
             SentenciaSQL.Parameters.Add("@CodigoT", SqlDbType.Int).Value = CodigoT;
+            SentenciaSQL.Parameters.Add("@Precio", SqlDbType.Int).Value = oferta;
             SentenciaSQL.Parameters.Add("@Fecha", SqlDbType.Date).Value = DateTime.Now.ToShortDateString();
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
@@ -384,5 +385,39 @@ namespace DAO
 
             return valor;
         }
+
+        //datatable que devuelve una tabla con las tareas postuladas y aceptadas por el empleador
+        public DataTable aceptartareasempleador(int codigo)
+        {
+            Sentencia = "select t.Titulo,t.Fecha,u.Precio,t.Codigo,t.Npos from Usuariostareas u,Tareas t where t.Codigo=u.CodigoTarea and u.CodigoEstudiante='" + codigo+"' and u.CE=1";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
+        }
+
+
+        public int AceptoTareaEmpleador(int Codigo,string estado,int estudiante)
+        {
+            TareasBO Dato = new TareasBO();
+            SqlCommand SentenciaSQL = new SqlCommand("Update UsuariosTareas set estado=@estado,CE=2 where CodigoTarea= @Codigo and CodigoEstudiante=@estudiante");
+            SentenciaSQL.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            SentenciaSQL.Parameters.Add("@estado", SqlDbType.VarChar).Value = estado;
+            SentenciaSQL.Parameters.Add("@estudiante", SqlDbType.Int).Value = estudiante;
+            SentenciaSQL.CommandType = CommandType.Text;
+            return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public int NopersonasTareas(int Codigotarea)
+        {
+            string sentencia = "Select count(estado)as estado from UsuariosTareas where CodigoTarea='"+Codigotarea+"' and estado='En curso'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            DataRow lol = tablavirtual.Rows[0];
+            int valor = int.Parse(lol["estado"].ToString());
+            return valor;
+        }
+
     }
 }

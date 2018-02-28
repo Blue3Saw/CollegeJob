@@ -33,7 +33,7 @@
                                                <img src="~/Recursos/FontEnd/images/movie-show.jpg" alt="" />
                                            </div>
                                        </div>
-                                        <div class="row">
+                                        @*<div class="row">
                                             <div class="col-lg-12">
                                                 Lista de postulados:
                                                 <div style="overflow-x:hidden; overflow-y:scroll; height:150px">
@@ -60,7 +60,7 @@
                                                     }
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 lista de postulados:
@@ -74,7 +74,7 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Estudiantes Postulados</h5>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div >
@@ -105,6 +105,10 @@
                                                                                             </div>
                                                                                             <div class="col-lg-4">
                                                                                                @if (fila["CE"].ToString() == "1")
+                                                                                               {
+                                                                                                <input class="btn btn-info btn-fill btn-warning" value="Enviado">
+                                                                                               }
+                                                                                               @if (fila["CE"].ToString() == "2")
                                                                                                {
                                                                                                 <input class="btn btn-info btn-fill btn-warning" value="Aceptado">
                                                                                                }
@@ -188,12 +192,45 @@
                                     </div>
                                    @if (permiso == "3")
                                    {
-                                       if (fechatarea < fecha)
+                                       if (fecha <= fechatarea)
                                        {
-                                        @Html.ActionLink("Postularse en la tarea", "HacerTarea", "Tareas", new { Codigo = @row["Codigo"] }, null)
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Postularse
+                                        </button>
+                                        @*@Html.ActionLink("Postularse en la tarea", "HacerTarea", "Tareas", new { Codigo = @row["Codigo"] }, null)*@
+                                   using (Ajax.BeginForm("HacerTarea", "Tareas", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+                                   {
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Ingrese la cantidad:</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h5>Oferto: </h5>
+                                                            <input type="hidden" class="form-control  border-input" name="Tarea2" value="@ViewData["Tarea"]" />
+                                                            <input type="text" class="form-control  border-input" name="oferta" placeholder="oferta" required="required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" class="btn btn-success">Ofrecer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                        }
-                                       else
-                                       {
+                                   }
+                                   else
+                                   {
                                         <label class="btn btn-block btn-danger">La Tarea a Caducado</label>
                                        }
                                    }
