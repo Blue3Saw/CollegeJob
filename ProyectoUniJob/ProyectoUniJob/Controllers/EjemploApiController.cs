@@ -18,11 +18,16 @@ namespace ProyectoUniJob.Controllers
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.HttpGet]
 
-        public List<object> Estatus()
+        public DataTable Estatus()
         {
-            List<object> listausu = ObjDAO.VerEstatus().AsEnumerable().ToList<object>();
-            return listausu;
+            return ObjDAO.VerEstatus();
         }
+
+        //public List<object> Estatus()
+        //{
+        //    List<object> listausu = ObjDAO.VerEstatus().AsEnumerable().ToList<object>();
+        //    return listausu;
+        //}
 
 
         //public List<EstatusBO> Estatus()

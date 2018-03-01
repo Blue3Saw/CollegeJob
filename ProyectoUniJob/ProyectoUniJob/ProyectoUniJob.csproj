@@ -192,16 +192,12 @@
     <Content Include="Recursos\FontEnd\css\subasta.css" />
     <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
     <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Recursos\FontEnd\images\1.jpg" />
     <Content Include="Recursos\FontEnd\images\1.png" />
     <Content Include="Recursos\FontEnd\images\1calif.png" />
-    <Content Include="Recursos\FontEnd\images\2.jpg" />
     <Content Include="Recursos\FontEnd\images\2.png" />
     <Content Include="Recursos\FontEnd\images\3.png" />
     <Content Include="Recursos\FontEnd\images\4.jpg" />
     <Content Include="Recursos\FontEnd\images\4.png" />
-    <Content Include="Recursos\FontEnd\images\5.jpg" />
-    <Content Include="Recursos\FontEnd\images\5.png" />
     <Content Include="Recursos\FontEnd\images\buttonA_off.jpg" />
     <Content Include="Recursos\FontEnd\images\buttonA_on.jpg" />
     <Content Include="Recursos\FontEnd\images\cal.png" />
@@ -253,6 +249,8 @@
     <Content Include="Recursos\FontEnd\js\starrr.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\pinia - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\pinia - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -371,7 +369,6 @@
     <Content Include="Views\Informacion\PaginaPrincipal.cshtml" />
     <Content Include="Views\Tareas\TodasTareasEmpleador.cshtml" />
     <Content Include="Views\Tareas\FiltroTareas.cshtml" />
-    <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
     <Content Include="Views\Tareas\Filtro.cshtml" />
     <Content Include="Views\Tareas\VistaCAlif.cshtml" />
     <Content Include="Views\Prueba\pruebaPostulados.cshtml" />
@@ -380,6 +377,9 @@
     <Content Include="Views\Prueba\sessioncoordenadas.cshtml" />
     <Content Include="Views\Usuario\PefilUsuarioTareas.cshtml" />
     <Content Include="Views\Tareas\AceptartareasEmpleados.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -393,7 +393,6 @@
     <Folder Include="Reportes\DataSets\" />
     <Folder Include="Reportes\Viewers\" />
     <Folder Include="Views\Reportes\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="Views\TipoUsuario\" />
   </ItemGroup>
   <ItemGroup>

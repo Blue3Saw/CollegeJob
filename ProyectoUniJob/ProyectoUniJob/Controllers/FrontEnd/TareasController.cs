@@ -217,12 +217,16 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         [HttpGet]
         public ActionResult EnviarCorreoView()
         {
-            return View("EnviarCorreo");
+            DAO.TareasDAO tareas = new TareasDAO();
+            var tarea = tareas.BuscarTareaSaidy(4);
+            return PartialView("EnviarCorreo", tarea);
         }
 
         [HttpPost]
         public ActionResult EnviarCorreo()
         {
+            DAO.TareasDAO tareas = new TareasDAO();
+            var tarea = tareas.BuscarTareaSaidy(4);
             DAO.UsuariosDAO User = new UsuariosDAO();
             UsuarioBO Usuario = User.PerfilUsuario(int.Parse(Session["codigo"].ToString()));
             string CorreoRemitente = "collegeJobSGM@gmail.com";
@@ -230,8 +234,8 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             MailMessage Correo = new MailMessage();
             Correo.To.Add(new MailAddress(CorreoDestinatario));
             Correo.From = new MailAddress(CorreoRemitente);
-            Correo.Subject = "Mensajes de prueba..";
-            Correo.Body = "Prueba 1  <a href='http://localhost:59538/Tareas/VistaCAlif'><img src='http://noeliareginelli.com/wp-content/uploads/2017/10/boton-clic-aqui.png' width='120px'/></a>";
+            Correo.Subject = "Tarea: " + tarea.Titulo;
+            Correo.Body = "La tarea"+tarea.Titulo+" ha finalizado <a href='http://pinia.gear.host/Tareas/VistaCAlif?idtarea="+4+"'><img src='http://noeliareginelli.com/wp-content/uploads/2017/10/boton-clic-aqui.png' width='120px'/></a>";
             Correo.IsBodyHtml = true;
             Correo.Priority = MailPriority.Normal;
             SmtpClient Cliente = new SmtpClient();
@@ -239,19 +243,21 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Cliente.Port = 587;
             Cliente.EnableSsl = true;
             Cliente.Credentials = new NetworkCredential("collegeJobSGM@gmail.com", "SGM123456");
-            try
+            
             {
                 Cliente.Send(Correo);
                 return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab5");
             }
-            catch 
+            
             {
-                return Content("Error");
+                //return Content("Error");
             }
         }
-        public ActionResult VistaCAlif()
+        public ActionResult VistaCAlif(int idtarea)
         {
-            return View();
+            DAO.TareasDAO tareas = new TareasDAO();
+            var tarea = tareas.BuscarTareaSaidy(5);
+            return View(tarea);
         }
         //metodos para la vista de ver perfil usuario por parte del empleador  
         
