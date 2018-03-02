@@ -71,6 +71,29 @@ namespace DAO
             return Conex.EjecutarSentencia(Com).Tables[0];
         }
 
+        public TareasBO BuscarTareaSaidy(int Codigo)
+        {
+            TareasBO Tarea = new TareasBO();
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Tareas WHERE Codigo = @Codigo");
+            Cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
+            Cmd.CommandType = CommandType.Text;
+            SqlDataReader Reader;
+            Cmd.Connection = Conex.ConectarBD();
+            Conex.AbrirConexion();
+            Reader = Cmd.ExecuteReader();
+            if(Reader.Read())
+            {
+                Tarea.Titulo = Reader["Titulo"].ToString();
+                Tarea.Fecha = Convert.ToDateTime(Reader["Fecha"].ToString());
+                Tarea.HoraInicio = Convert.ToDateTime(Reader["HoraInicio"].ToString());
+                Tarea.Descripcion = Reader["Descripcion"].ToString();
+                Tarea.Direccion = Reader["Direccion"].ToString();
+                //Tarea.CantPersonas = Convert.ToInt32(Reader["CanPer"].ToString());
+            }
+            Conex.CerrarConexion();
+            return Tarea;
+        }
+
         public int AceptarTarea(int Codigo)
         {
             TareasBO Dato = new TareasBO();

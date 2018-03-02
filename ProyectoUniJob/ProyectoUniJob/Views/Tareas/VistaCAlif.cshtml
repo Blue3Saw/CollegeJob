@@ -1,37 +1,89 @@
 ﻿@using BO
 @model TareasBO
 
-<h1>Calificar</h1>
+@{
+    ViewBag.Title = "IndexEmpleador";
+    Layout = "~/Views/FrontEnd/MasterPage/_layoutUsuarios.cshtml";
+}
 
-<button class="btn btn-success right" data-toggle="modal" data-target="#ModalCalif">Finalizar tarea</button>
-<div class="modal fade" id="ModalCalif" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-sm modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                &times;
-            </button>
-            <div class="modal-header">Califica</div>
-            <div class="modal-body">
-                <hr />
-                Calificar: <div id="Estrellas"></div>
-            </div>
-        </div>
+<div class="w3layouts-breadcrumbs text-center">
+    <div class="container">
+        <!--<span class="agile-breadcrumbs"><a href=@Url.Action("IndexEmpleador", "PrincipalFE")><i class="fa fa-home home_1"></i></a> / <span>Empleador</span></span>-->
     </div>
 </div>
 
-<script src="~/Recursos/FontEnd/js/starrr.js"></script>
-<link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
-<script>
-    $('#Estrellas').starrr({
-        rating: 3,
-        change: function (e, valor) {
-            alert(valor);
-        }
+<div class="agile-pay w3layouts-content">
+    <div class="container">
+        <!--<h3 class="w3-head">Bienvenid&#64;: @Session["Nombre"]</h3>-->
+        @using (Ajax.BeginForm("VistaCAlif", "Tareas", new AjaxOptions() { HttpMethod = "POST" }))
+    {
 
-    });
-    //$(function () { $("#Estrellas").starrr() });
-    $(document).ready(function () {
-        $('#ModalCalif').modal('show');
-    });
+        <h3>Título de la tarea</h3>
+        
+        <h3>@Model.Titulo</h3>
+        <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Fecha</h4>
+                
+                <h4>@Model.Fecha</h4>
+                <div class="clearfix">&nbsp;</div>
+                <h4>Hora</h4>
+                
+                <h4>@Model.HoraInicio</h4>
+                <div class="clearfix">&nbsp;</div>
 
-</script>
+            </div>
+            <div class="col-md-6">
+                <h4>Descripción</h4>
+                
+                <h4>@Model.Descripcion</h4>
+                <div class="clearfix">&nbsp;</div>
+                <h4>Dirección</h4>
+                
+                <h4>@Model.Direccion</h4>
+                <div class="clearfix">&nbsp;</div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-12 bann-info">
+
+            Calificar: <div id="Estrellas" ></div>
+        </div>
+}
+
+    </div>
+
+    </div>
+
+</div>
+        
+
+        
+
+
+
+
+
+
+
+
+
+        <script src="~/Recursos/FontEnd/js/starrr.js"></script>
+        <link href="~/Recursos/FontEnd/css/starrr.css" rel="stylesheet" />
+        <script>
+            $('#Estrellas').starrr({
+                rating: 3,
+                change: function (e, valor) {
+                    
+                }
+
+            });
+            //$(function () { $("#Estrellas").starrr() });
+            $(document).ready(function () {
+                $('#ModalCalif').modal('show');
+            });
+
+        </script>

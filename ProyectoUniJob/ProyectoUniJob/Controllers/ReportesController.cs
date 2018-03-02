@@ -7,7 +7,7 @@ using System.IO;
 using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using BO.Reportes;
+//using BO.Reportes;
 using DAO;
 
 namespace ProyectoUniJob.Controllers

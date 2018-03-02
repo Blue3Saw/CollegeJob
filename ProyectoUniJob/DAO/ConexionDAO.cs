@@ -23,10 +23,14 @@ namespace DAO
             //string cad_con = "Data Source=SAIDY_PG; Initial Catalog=Integrador3; Integrated Security=True"; 
             //string cad_con = "Data Source=LAPTOP-80619S9J; Initial Catalog=Integrador3; Integrated Security=True"; 
 
+
+           // string cad_con = "Data Source=SQL7004.site4now.net;Initial Catalog=DB_A33A9E_CollegeJob;User Id=DB_A33A9E_CollegeJob_admin;Password=250897werever;";
+
             string cad_con = "Data Source=SQL7004.site4now.net;Initial Catalog=DB_A33A9E_CollegeJob;User Id=DB_A33A9E_CollegeJob_admin;Password=250897werever;";
             //string cad_con = "Data Source=LAPTOP-0MTNU5AJ\\SQLEXPRESS; Initial Catalog=Integrador3; Integrated Security=True";
             //string cad_con = "Data Source=SAIDY_PG; Initial Catalog=Integrador3; Integrated Security=True"; 
             //string cad_con = "Data Source=LAPTOP-80619S9J\\MSSQLSERVER01; Initial Catalog=Integrador3; Integrated Security=True";
+
 
             con = new SqlConnection(cad_con);
             return con;
@@ -97,7 +101,17 @@ namespace DAO
             ComandoSQL.Connection = this.ConectarBD();
             this.AbrirConexion();
             adaptador.SelectCommand = ComandoSQL;
-            adaptador.Fill(DataSetAdaptador);
+            try
+            {
+
+                adaptador.Fill(DataSetAdaptador);
+
+            }
+            catch 
+            {
+
+                
+            }
             this.CerrarConexion();
             return DataSetAdaptador;
         }

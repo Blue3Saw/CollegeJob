@@ -57,7 +57,15 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Device" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,6 +75,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -178,16 +192,12 @@
     <Content Include="Recursos\FontEnd\css\subasta.css" />
     <Content Include="Recursos\FontEnd\fonts\fontawesome-webfont.svg" />
     <Content Include="Recursos\FontEnd\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Recursos\FontEnd\images\1.jpg" />
     <Content Include="Recursos\FontEnd\images\1.png" />
     <Content Include="Recursos\FontEnd\images\1calif.png" />
-    <Content Include="Recursos\FontEnd\images\2.jpg" />
     <Content Include="Recursos\FontEnd\images\2.png" />
     <Content Include="Recursos\FontEnd\images\3.png" />
     <Content Include="Recursos\FontEnd\images\4.jpg" />
     <Content Include="Recursos\FontEnd\images\4.png" />
-    <Content Include="Recursos\FontEnd\images\5.jpg" />
-    <Content Include="Recursos\FontEnd\images\5.png" />
     <Content Include="Recursos\FontEnd\images\buttonA_off.jpg" />
     <Content Include="Recursos\FontEnd\images\buttonA_on.jpg" />
     <Content Include="Recursos\FontEnd\images\cal.png" />
@@ -239,6 +249,8 @@
     <Content Include="Recursos\FontEnd\js\starrr.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\pinia - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\pinia - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -247,17 +259,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BackEnd\AgregarEstudianteController.cs" />
     <Compile Include="Controllers\BackEnd\AprobarTareaController.cs" />
     <Compile Include="Controllers\BackEnd\CategoriasYTiposController.cs" />
     <Compile Include="Controllers\BackEnd\InformacionController.cs" />
     <Compile Include="Controllers\BackEnd\MesajesAdmController.cs" />
     <Compile Include="Controllers\BackEnd\PerfilAdminController.cs" />
+    <Compile Include="Controllers\EjemploApiController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
     <Compile Include="Controllers\FrontEnd\DateTable.cs" />
     <Compile Include="Controllers\FrontEnd\PrincipalFEController.cs" />
     <Compile Include="Controllers\FrontEnd\TareasController.cs" />
     <Compile Include="Controllers\FrontEnd\UsuarioController.cs" />
+    <Compile Include="Controllers\Login_ApiController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -354,7 +369,6 @@
     <Content Include="Views\Informacion\PaginaPrincipal.cshtml" />
     <Content Include="Views\Tareas\TodasTareasEmpleador.cshtml" />
     <Content Include="Views\Tareas\FiltroTareas.cshtml" />
-    <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
     <Content Include="Views\Tareas\Filtro.cshtml" />
     <Content Include="Views\Tareas\VistaCAlif.cshtml" />
     <Content Include="Views\Prueba\pruebaPostulados.cshtml" />
@@ -363,6 +377,9 @@
     <Content Include="Views\Prueba\sessioncoordenadas.cshtml" />
     <Content Include="Views\Usuario\PefilUsuarioTareas.cshtml" />
     <Content Include="Views\Tareas\AceptartareasEmpleados.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Tareas\EnviarCorreo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -376,7 +393,6 @@
     <Folder Include="Reportes\DataSets\" />
     <Folder Include="Reportes\Viewers\" />
     <Folder Include="Views\Reportes\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="Views\TipoUsuario\" />
   </ItemGroup>
   <ItemGroup>
