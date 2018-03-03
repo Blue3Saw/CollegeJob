@@ -41,12 +41,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         .banner1 {
             background-image: url('../../Recursos/FontEnd/images/universitarios.jpg');
         }
+
         .banner2 {
             background-image: url('../../Recursos/FontEnd/images/universitarios2.jpg');
         }
+
         .banner3 {
             background-image: url('../../Recursos/FontEnd/images/universitarios3.jpg');
         }
+
         .banner4 {
             background-image: url('../../Recursos/FontEnd/images/universitarios4.jpg');
         }
@@ -57,15 +60,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <!--logo-->
             <div class="logo">
-                <img width="67px" src="~/Recursos/FontEnd/images/logo verde.png" />
-                <h1 style="display: inline;"><a href="index.html">CollegeJob</a></h1>
+                <img width="67px" src="~/Recursos/FontEnd/images/logoCollegeJob.png">
+                <h1 style="display: inline;"><a href="index.html" style="color:#46A69B;">CollegeJob</a></h1>
             </div>
-            <a class="navbar-brand" style="color:cyan" href="#quienes">Quiénes somos?</a>
+            <a class="navbar-brand" style="color:cyan" href="#quienes">¿Quiénes somos?</a>
             <a class="navbar-brand" style="color:cyan" href="#mision">Misión</a>
             <a class="navbar-brand" style="color:cyan" href="#vision">Visión</a>
+            <a class="navbar-brand" style="color:cyan" href="#valores">Valores</a>
             <!--//logo-->
             <div class="w3layouts-login">
-                <a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-user"> </i>Login / Registrarme</a>
+                <a data-toggle="modal" data-target="#myModal" href="#" style="color:cyan;"><i class="glyphicon glyphicon-user"> </i>Login / Registrarme</a>
             </div>
             <div class="clearfix"></div>
             <!--Login modal-->
@@ -77,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 &times;
                             </button>
-                            <h4 class="modal-title" id="myModalLabel">
+                            <h4 class="modal-title" id="myModalLabel" style="color:#2A5C56;">
                                 CollegeJob
                             </h4>
                         </div>
@@ -95,124 +99,134 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <div class="form-horizontal">
                                                 @using (Ajax.BeginForm("Login", "PrincipalFE", new AjaxOptions() { HttpMethod = "POST" }))
                                                 {
-                                            @Html.AntiForgeryToken()
-                                            <div class="form-group">
-                                                <label for="email" class="col-sm-2 control-label">
-                                                    Email
-                                                </label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" name="Email" placeholder="Email" required="required" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                                    Contraseña
-                                                </label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" class="form-control" name="Contraseña" placeholder="password" required="required" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                </div>
-                                                <div class="col-sm-10">
-                                                    <button type="submit" class="submit btn btn-primary btn-sm">
-                                                        Ingresar
-                                                    </button>
-                                                    <a href="javascript:;" class="agileits-forgot">Olvide mi contraseña</a>
-                                                </div>
-                                            </div>
+                                                    @Html.AntiForgeryToken()
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-2"></div>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-user"></i></span>
+                                                                <input type="email" class="form-control" name="Email" placeholder="Correo electrónico" required="required" aria-describedby="basic-addon2" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-2"></div>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon" id="basic-addon3"><i class="fa fa-unlock-alt"></i></span>
+                                                                <input type="password" class="form-control" name="Contraseña" placeholder="Contraseña" required="required" aria-describedby="basic-addon3" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <button type="submit" style="background-color:#46A69B;" class="submit btn btn-primary btn-sm form-control">
+                                                                    Ingresar
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-sm-2"></div>
+                                                        </div>
+                                                    </div>
                                                 }
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="Registration">
                                             @using (Ajax.BeginForm("AgregarEmp", "Usuario", new AjaxOptions() { HttpMethod = "POST" }))
                                             {
-                                        <div class="form-horizontal">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">
-                                                    Nombre
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required="required" />
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Nombre
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">
+                                                            Apellidos
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="Apellidos" class="form-control" placeholder="Apellidos" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Nacimiento
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="FechaNac" class="form-control" placeholder="dd/mm/yyyy" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">
+                                                            Teléfono
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="tel" name="Telefono" class="form-control" placeholder="Teléfono" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Dirección
+                                                        </label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" name="Direccion" class="form-control" placeholder="Dirección" required="required" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">
+                                                            Email
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="email" name="Email" class="form-control" placeholder="ejemplo@mail.com" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">
+                                                            Contraseña
+                                                        </label>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-7">
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <button type="submit" class="submit btn btn-primary btn-sm form-control" style="background-color:#46A69B;">
+                                                                    Registrarme
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-sm-2"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <label class="col-sm-2 control-label">
-                                                    Apellidos
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="text" name="Apellidos" class="form-control" placeholder="Apellidos" required="required" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">
-                                                    Nacimiento
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="date" name="FechaNac" class="form-control" placeholder="dd/mm/yyyy" required="required" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <label class="col-sm-2 control-label">
-                                                    Teléfono
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="tel" name="Telefono" class="form-control" placeholder="Teléfono" required="required" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">
-                                                    Dirección
-                                                </label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="Direccion" class="form-control" placeholder="Dirección" required="required" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">
-                                                    Email
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="email" name="Email" class="form-control" placeholder="ejemplo@mail.com" required="required" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <label class="col-sm-2 control-label">
-                                                    Contraseña
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña" required="required" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-2">
-                                                </div>
-                                                <div class="col-sm-10">
-                                                    <button type="submit" class="submit btn btn-primary btn-sm">
-                                                        Continuar
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                             }
                                         </div>
                                     </div>
@@ -273,28 +287,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <!--Vertical Tab-->
     <div>
-        
+
     </div>
     <!--Plug-in Initialisation-->
     <script type="text/javascript">
-    $(document).ready(function() {
+        $(document).ready(function () {
 
-        //Vertical Tab
-        $('#parentVerticalTab').easyResponsiveTabs({
-            type: 'vertical', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true, // 100% fit in a container
-            closed: 'accordion', // Start closed if in accordion view
-            tabidentify: 'hor_1', // The tab groups identifier
-            activate: function(event) { // Callback function if tab is switched
-                var $tab = $(this);
-                var $info = $('#nested-tabInfo2');
-                var $name = $('span', $info);
-                $name.text($tab.text());
-                $info.show();
-            }
+            //Vertical Tab
+            $('#parentVerticalTab').easyResponsiveTabs({
+                type: 'vertical', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo2');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
         });
-    });
     </script>
     <!-- //Categories -->
     <!-- Support content -----Top-->
@@ -304,7 +318,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 @*<img src="~/Recursos/BackEnd/img/" alt=" " class="img-responsive" />*@
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1><u>Top </u></h1>               
+                <h1><u>Top </u></h1>
                 <p>
                     <table class="table table-hover">
                         <thead style="background-color:black;">
@@ -326,7 +340,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </table>
                 </p>
                 <div class="agile_more">
-                    <a href="support.html" class="type-4">          
+                    <a href="support.html" class="type-4">
                     </a>
                 </div>
             </div>
@@ -341,17 +355,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenQ" class="img-responsive" alt="" />
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1 style="color:white"><u>Quiénes somos?</u></h1>
+                <h1 style="color:white"><u>¿Quiénes somos?</u></h1>
                 <p style="color: white; font-family: " Helvetica Neue", Helvetica, Arial, sans-serif;">
                     @ViewBag.Informacion.Quienes
                 </p>
                 <div class="agile_more">
-                    <a href="support.html" class="type-4">                     
+                    <a href="support.html" class="type-4">
                     </a>
                 </div>
             </div>
-       
-            <div class="clearfix"></div>          
+
+            <div class="clearfix"></div>
         </div>
     </div>
     <!--//phone-->
@@ -362,15 +376,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenM" alt="" class="img-responsive" />
             </div>
             <div class="col-md-7 w3_agile_support_right">
-                <h1><u>Misión</u></h1>              
+                <h1><u>Misión</u></h1>
                 <p>
                     @ViewBag.Informacion.Mision
                 </p>
                 <div>
-                <div class="agile_more">
-                    <a href="support.html" class="type-4">           
-                    </a>
-                </div>
+                    <div class="agile_more">
+                        <a href="support.html" class="type-4">
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -398,6 +412,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--//phone-->
+    <div class="w3l-support" id="valores">
+        <div class="container">
+            <div class="col-md-5 w3_agile_support_left">
+                <img src="~/Recursos/BackEnd/img/@ViewBag.Informacion.ImagenM" alt="" class="img-responsive" />
+            </div>
+            <div class="col-md-7 w3_agile_support_right">
+                <h1><u>Valores</u></h1>
+                <p>
+                    MAPLE CAMBIA ESTO, QUE JALE LOS DATOS DE LA BD :v
+                </p>
+                <div>
+                    <div class="agile_more">
+                        <a href="support.html" class="type-4">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
     <!--offers-->
     <div class="w3-offers">
         <div class="container">
@@ -412,11 +446,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//offers-->
     <!--partners-->
     @*<div class="w3layouts-partners">
-        @*<h3>Información para el estudiante</h3>
-        <div class="container">
-            
-        </div>
-    </div>*@
+            @*<h3>Información para el estudiante</h3>
+            <div class="container">
+
+            </div>
+        </div>*@
     <!--//partners-->
     <!-- subscribe -->
     <div class="w3-subscribe agileits-w3layouts">
@@ -431,11 +465,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-6 w3-agile-subscribe-right">
                 @*<h3 class="w3ls-title">Subscribe to Our <br><span>Newsletter</span></h3>
-                <form action="#" method="post">
-                    <input type="email" name="email" placeholder="Enter your Email..." required="">
-                    <input type="submit" value="Subscribe">
-                    <div class="clearfix"> </div>
-                </form>*@
+                    <form action="#" method="post">
+                        <input type="email" name="email" placeholder="Enter your Email..." required="">
+                        <input type="submit" value="Subscribe">
+                        <div class="clearfix"> </div>
+                    </form>*@
             </div>
             <div class="clearfix"> </div>
         </div>
@@ -462,38 +496,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Banner-slider -->
     <script src="~/Recursos/FontEnd/js/responsiveslides.min.js"></script>
     <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
     </script>
     <!-- //Banner-slider -->
     <!-- //Responsive-slider -->
     <!-- Bootstrap select option script -->
     <script src="~/Recursos/FontEnd/js/bootstrap-select.js"></script>
     <script>
-  $(document).ready(function () {
-    var mySelect = $('#first-disabled2');
+        $(document).ready(function () {
+            var mySelect = $('#first-disabled2');
 
-    $('#special').on('click', function () {
-      mySelect.find('option:selected').prop('disabled', true);
-      mySelect.selectpicker('refresh');
-    });
+            $('#special').on('click', function () {
+                mySelect.find('option:selected').prop('disabled', true);
+                mySelect.selectpicker('refresh');
+            });
 
-    $('#special2').on('click', function () {
-      mySelect.find('option:disabled').prop('disabled', false);
-      mySelect.selectpicker('refresh');
-    });
+            $('#special2').on('click', function () {
+                mySelect.find('option:disabled').prop('disabled', false);
+                mySelect.selectpicker('refresh');
+            });
 
-    $('#basic2').selectpicker({
-      liveSearch: true,
-      maxOptions: 1
-    });
-  });
+            $('#basic2').selectpicker({
+                liveSearch: true,
+                maxOptions: 1
+            });
+        });
     </script>
     <!-- //Bootstrap select option script -->
     <!-- easy-responsive-tabs -->
@@ -501,40 +535,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/Recursos/FontEnd/js/easyResponsiveTabs.js"></script>
     <!-- //easy-responsive-tabs -->
     <!-- here stars scrolling icon -->
-    @if(ViewBag.Codigo != null)
+    @if (ViewBag.Codigo != null)
     {
         <script>
-            window.onload = function() {
+            window.onload = function () {
                 swal('Oops!', 'Datos incorrectos, por favor verifica que el correo y la contraseña sean correctos', 'error')
             }
         </script>
     }
 
     <script type="text/javascript">
-				$(document).ready(function() {
-					/*
-						var defaults = {
-						containerID: 'toTop', // fading element id
-						containerHoverID: 'toTopHover', // fading element hover id
-						scrollSpeed: 1200,
-						easingType: 'linear'
-						};
-					*/
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
 
-					$().UItoTop({ easingType: 'easeOutQuart' });
+            $().UItoTop({ easingType: 'easeOutQuart' });
 
-					});
+        });
     </script>
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="~/Recursos/FontEnd/js/move-top.js"></script>
     <script type="text/javascript" src="~/Recursos/FontEnd/js/easing.js"></script>
     <script type="text/javascript">
-				jQuery(document).ready(function($) {
-					$(".scroll").click(function(event){
-						event.preventDefault();
-						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-					});
-				});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
     </script>
     <!-- start-smoth-scrolling -->
     <!-- //here ends scrolling icon -->

@@ -178,6 +178,7 @@
     <Content Include="Recursos\BackEnd\js\paper-dashboard.js" />
     <Content Include="Recursos\FontEnd\css\bootstrap-select.css" />
     <Content Include="Recursos\FontEnd\css\bootstrap.css" />
+    <Content Include="Recursos\FontEnd\css\cardstyle.css" />
     <Content Include="Recursos\FontEnd\css\clockpicker.css" />
     <Content Include="Recursos\FontEnd\css\creditly.css" />
     <Content Include="Recursos\FontEnd\css\easy-responsive-tabs.css" />
@@ -213,6 +214,7 @@
     <Content Include="Recursos\FontEnd\images\lg8.png" />
     <Content Include="Recursos\FontEnd\images\lg9.png" />
     <Content Include="Recursos\FontEnd\images\logo verde.png" />
+    <Content Include="Recursos\FontEnd\images\logoCollegeJob.png" />
     <Content Include="Recursos\FontEnd\images\logopr.jpeg" />
     <Content Include="Recursos\FontEnd\images\m1.jpg" />
     <Content Include="Recursos\FontEnd\images\Mision.png" />
@@ -244,6 +246,7 @@
     <Content Include="Recursos\FontEnd\js\jquery-ui.js" />
     <Content Include="Recursos\FontEnd\js\jquery.seat-charts.js" />
     <Content Include="Recursos\FontEnd\js\locationpicker.jquery.js" />
+    <Content Include="Recursos\FontEnd\js\materialize.min.js" />
     <Content Include="Recursos\FontEnd\js\move-top.js" />
     <Content Include="Recursos\FontEnd\js\responsiveslides.min.js" />
     <Content Include="Recursos\FontEnd\js\starrr.js" />
@@ -251,6 +254,16 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\pinia - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\pinia - Web Deploy.pubxml" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Bold.woff" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Bold.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Light.woff" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Light.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Medium.woff" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Medium.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Regular.woff" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Regular.woff2" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Thin.woff" />
+    <Content Include="Recursos\FontEnd\fonts\roboto\Roboto-Thin.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
