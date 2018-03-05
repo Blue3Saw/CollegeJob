@@ -64,7 +64,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Datos.Email = Email;
             Datos.Contraseña = Contraseña;
             Datos.TipoUsuario = 2;
-            Datos.Imagen = "Hola.jpg";
+            //Datos.Imagen = "Hola.jpg";
             ObjUsuario.AgregarEmpleador(Datos);
 
             ObjUsuario.LoginEmpleador(Datos);
@@ -73,30 +73,19 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult VerPerfil()
         {
-            UsuarioBO ObjBO = new UsuarioBO();
-            return View(ObjUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString())));
+            int sesion = int.Parse(Session["Codigo"].ToString());
+            return View(ObjUsuario.TablaUsuarios3(sesion));
 
-            //var _fila = Tabla.Rows[0];
-            //{
-            //    string Contraseña = ObjBO.Desencriptar(_fila.ItemArray[0].ToString());
-            //    _fila.ItemArray[7] = Contraseña;
-            //}
-
-            ////string Contraseña = ObjBO.Desencriptar(Tabla.Rows[0].ItemArray[7].ToString());
-            ////Tabla.Rows[0].ItemArray[7] = Contraseña;
-            //return View(Tabla);
         }
 
         [HttpPost]
-        public ActionResult ActualizarPerfil(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono, string direccion, string img, HttpPostedFileBase Imagen)
+        public ActionResult ActualizarPerfil(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono, string direccion, byte[] img, HttpPostedFileBase Imagen)
         {
             UsuarioBO bo = new UsuarioBO();
             if (Imagen != null)
             {
-                var filename = Path.GetFileName(Imagen.FileName);
-                var path = Path.Combine(Server.MapPath("~/Recursos/FontEnd/images/"), filename);
-                Imagen.SaveAs(path);
-                bo.Imagen = filename;
+                bo.Imagen = new byte[Imagen.ContentLength];
+                Imagen.InputStream.Read(bo.Imagen, 0, Imagen.ContentLength);
             }
             else
             {

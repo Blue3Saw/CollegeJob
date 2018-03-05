@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DAO;
 using BO;
 using System.IO;
+using System.Drawing;
 
 namespace ProyectoUniJob.Controllers.BackEnd
 {
@@ -20,23 +21,22 @@ namespace ProyectoUniJob.Controllers.BackEnd
 
         public ActionResult DatosPerfil()
         {
-            return View(objUsuario.TablaUsuarios3(int.Parse(Session["Codigo"].ToString())));
+            int sesion= int.Parse(Session["Codigo"].ToString());
+            return View(objUsuario.TablaUsuarios3(sesion));
         }
 
         [HttpPost]
-        public ActionResult actualizar(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono,string direccion,string img, HttpPostedFileBase Imagen)
+        public ActionResult actualizar(string ID, string Nombre, string Apellidos, string Correo, string Contraseña, string FechaNac, string Telefono,string direccion,byte[] img, HttpPostedFileBase Imagen)
         {
             UsuarioBO bo = new UsuarioBO();
             if (Imagen!=null)
             {
-                var filename = Path.GetFileName(Imagen.FileName);
-                var path = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
-                Imagen.SaveAs(path);
-                bo.Imagen = filename;
+                bo.Imagen = new byte[Imagen.ContentLength];
+                Imagen.InputStream.Read(bo.Imagen, 0, Imagen.ContentLength);
             }
             else
             {
-                bo.Imagen = img;
+                bo.Imagen =img;
             }
             bo.Codigo = int.Parse(Session["Codigo"].ToString());
             bo.Nombre = Nombre;

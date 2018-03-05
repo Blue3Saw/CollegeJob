@@ -17,7 +17,7 @@ namespace DAO
         public int AgregarTarea(object ObjT)
         {
             TareasBO Dato = (TareasBO)ObjT; 
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Tareas (UsuarioEmpleador,Titulo, Fecha, HoraInicio, HoraFinal, Tipo, Descripcion, Estatus, Longitud, Latitud, Direccion,CanPer) output inserted.Codigo VALUES (@Empleador,@Titulo, @Fecha, @HoraInicio, @HoraFin, @Tipo, @Descripcion, @Estatus, @Longitud, @Latitud, @Direccion,@CanPer)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Tareas (UsuarioEmpleador,Titulo, Fecha, HoraInicio, HoraFinal, Tipo, Descripcion, Estatus, Longitud, Latitud, Direccion,Npos) output inserted.Codigo VALUES (@Empleador,@Titulo, @Fecha, @HoraInicio, @HoraFin, @Tipo, @Descripcion, @Estatus, @Longitud, @Latitud, @Direccion,@CanPer)");
             int id; int.TryParse(Dato.Codigo.ToString(), out id);
             SentenciaSQL.Parameters.Add("@Empleador", SqlDbType.Int).Value = Dato.CodigoEmpleador;
             SentenciaSQL.Parameters.Add("@Titulo", SqlDbType.VarChar).Value = Dato.Titulo;
@@ -140,7 +140,7 @@ namespace DAO
             //cambie a lo ultimo Una T por una U
             if (filtro == 0)
             {
-                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo");
+                SqlCommand Com = new SqlCommand("SELECT T.Codigo, T.Titulo, T.Descripcion, T.Direccion, T.Longitud, T.Latitud, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion, (SELECT top(1) F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE U.Codigo = @Codigo");
                 Com.Parameters.Add("@Codigo", SqlDbType.Int).Value = Codigo;
                 Com.CommandType = CommandType.Text;
                 lol= Conex.EjecutarSentencia(Com).Tables[0];
@@ -211,7 +211,7 @@ namespace DAO
 
         public DataTable TodasTareas()
         {
-            Sentencia = "SELECT T.Codigo, T.Titulo, T.Descripcion, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Estatus = 1";
+            Sentencia = "SELECT T.Codigo, T.Titulo, T.Descripcion, T.Fecha, T.HoraInicio, T.HoraFinal, (U.Nombre + ' ' + U.Apellidos) AS 'Empleador', CT.Clasificacion,(SELECT top(1) F.Imagen FROM Fotos F WHERE T.Codigo = F.TareaID) AS 'Imagen' FROM Tareas T INNER JOIN Usuarios U ON T.UsuarioEmpleador = U.Codigo INNER JOIN ClasificacionTarea CT ON T.Tipo = CT.Codigo WHERE T.Estatus = 1";
             SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
             DataTable tablavirtual = new DataTable();
             mostar.Fill(tablavirtual);
@@ -440,6 +440,16 @@ namespace DAO
             DataRow lol = tablavirtual.Rows[0];
             int valor = int.Parse(lol["estado"].ToString());
             return valor;
+        }
+
+        //trae todas las imagenes de la tarea
+        public DataTable ImgenesTarea(int codigo)
+        {
+            Sentencia = "Select * from Fotos where TareaID='"+codigo+"'";
+            SqlDataAdapter mostar = new SqlDataAdapter(Sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            return tablavirtual;
         }
 
     }

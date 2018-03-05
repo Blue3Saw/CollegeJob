@@ -9,7 +9,7 @@ namespace BO
     public class FotosBO
     {
         public int Codigo { get; set; }
-        public string Imagen { get; set; }
+        public byte[] Imagen { get; set; }
         public int CodigoTarea { get; set; }
     }
 }

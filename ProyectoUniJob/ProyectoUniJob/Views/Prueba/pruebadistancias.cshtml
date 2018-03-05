@@ -9,10 +9,11 @@
         <div class="credit-card-wrapper">
             <div class="first-row form-group">
                 Se encontaron : @ViewData["ResultadoBusqueda"] publicaciones.
-                <div class="row">
+                @*<div class="row">*@
+                <div class="band">
                     @foreach (DataRow row in Model.Rows)
                     {
-                        <div class="col-md-4 movie-preview">
+                        @*<div class="col-md-4 movie-preview">
                             <div class="m-movie-title">
                                 <h4 class="m-movie-link" style="color:black;">@row["Titulo"]</h4>
                                 <div class="clearfix"></div>
@@ -26,6 +27,17 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
+                        </div>*@
+                        <div class="item-5">
+                            <a href="/Tareas/TareaSeleccionada?Codigo=@row["Codigo"]" class="card">
+                                <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/strange.jpg);"></div>
+                                <article>
+                                    <h1>@row["Titulo"]</h1>
+                                    <p>@row["Nombre"]</p>
+                                    <p>@row["Clasificacion"]</p>
+                                    <p>@row["distanciaskm"] Km Aproximadamente</p>
+                                </article>
+                            </a>
                         </div>
                     }
                 </div>

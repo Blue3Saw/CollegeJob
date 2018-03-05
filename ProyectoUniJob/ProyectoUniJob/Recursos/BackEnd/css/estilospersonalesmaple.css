@@ -25,3 +25,13 @@ text-overflow: ellipsis
     visibility: hidden !important;
   z-index: -1;
 }
+
+.carousel-inner img {
+    width: 300px;
+    max-height: 400px;
+}
+
+.carousel-inner{
+ height: 200px;
+}
+

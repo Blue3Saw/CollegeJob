@@ -46,14 +46,14 @@ namespace ProyectoUniJob.Controllers.BackEnd
             BO.Estatus = "Activo";
             if (Imagen != null)
             {
-                var filename = Path.GetFileName(Imagen.FileName);
-                var path2 = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
-                Imagen.SaveAs(path2);
-                BO.Imagen = filename;
+                //var filename = Path.GetFileName(Imagen.FileName);
+                //var path2 = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
+                //Imagen.SaveAs(path2);
+                //BO.Imagen = filename;
             }
             else
             {
-                BO.Imagen = "Ninguna";
+                //BO.Imagen = "Ninguna";
             }
 
             QrEncoder qrencoder = new QrEncoder(ErrorCorrectionLevel.H);
@@ -112,14 +112,14 @@ namespace ProyectoUniJob.Controllers.BackEnd
             UsuarioBO bo = new UsuarioBO();
             if (Imagen != null)
             {
-                var filename = Path.GetFileName(Imagen.FileName);
-                var path = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
-                Imagen.SaveAs(path);
-                bo.Imagen = filename;
+                //var filename = Path.GetFileName(Imagen.FileName);
+                //var path = Path.Combine(Server.MapPath("~/Recursos/BackEnd/img/"), filename);
+                //Imagen.SaveAs(path);
+                //bo.Imagen = filename;
             }
             else
             {
-                bo.Imagen = img;
+                //bo.Imagen = img;
             }
             if (Tipo != null)
             {

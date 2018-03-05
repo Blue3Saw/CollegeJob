@@ -18,7 +18,7 @@ namespace DAO
         {
             FotosBO Dato = (FotosBO)ObjF;
             SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO Fotos (Imagen, TareaID) VALUES (@Imagen, @TareaID)");
-            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.Image).Value = Dato.Imagen;
             SentenciaSQL.Parameters.Add("@TareaID", SqlDbType.Int).Value = Dato.CodigoTarea;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
@@ -33,6 +33,18 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@TareaID", SqlDbType.Int).Value = Dato.CodigoTarea;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
+        }
+
+        public int idinsetado()
+        {
+            sentencia = "SELECT @@IDENTITY AS 'Identity'";
+            SqlDataAdapter mostar = new SqlDataAdapter(sentencia, Conex.ConectarBD());
+            DataTable tablavirtual = new DataTable();
+            mostar.Fill(tablavirtual);
+            DataRow lol = tablavirtual.Rows[0];
+            int valor = int.Parse(lol["Identity"].ToString());
+
+            return valor;
         }
     }
 }

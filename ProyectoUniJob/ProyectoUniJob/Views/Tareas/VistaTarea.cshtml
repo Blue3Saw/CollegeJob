@@ -7,7 +7,7 @@
 <div class="col-md-2"></div>
 <div class="clearfix">&nbsp;</div>
 <div class="container-fluid">
-    <div class="container card" style="width: 109%;">
+    <div class="container" style="width: 100%;">
 
         @using (Ajax.BeginForm("AgregarTarea", "Tareas", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
         {
@@ -96,7 +96,7 @@
             <div class="col-lg-4">
                 <div class="bnr-left">
                     <label class="inputLabel">Imágenes:</label>
-                    <input id="file-3"name="Imagen"  type="file" multiple width="50xp" max="2" />
+                    <input id="file-3"name="Imagen"  type="file" multiple width="50xp" max="4"/>
                 </div>
             </div>  
             

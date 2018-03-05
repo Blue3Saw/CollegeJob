@@ -27,7 +27,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
             SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
             SentenciaSQL.Parameters.Add("@TipoUs", SqlDbType.Int).Value = Dato.TipoUsuario;
-            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value = Dato.Imagen;
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.Image).Value = Dato.Imagen;
             SentenciaSQL.Parameters.Add("@QR", SqlDbType.VarChar).Value = Dato.QR;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
@@ -219,7 +219,7 @@ namespace DAO
                 Datos.Contraseña= _fila.ItemArray[7].ToString();
                 Datos.TipoUsuario = int.Parse(_fila.ItemArray[8].ToString());
                 Datos.Estatus = _fila.ItemArray[9].ToString();
-                Datos.Imagen= _fila.ItemArray[10].ToString();
+                //Datos.Imagen= _fila.ItemArray[10];
                 
             }
             return Datos;
@@ -249,7 +249,7 @@ namespace DAO
             SentenciaSQL.Parameters.Add("@Telefono", SqlDbType.BigInt).Value = Dato.Telefono;
             SentenciaSQL.Parameters.Add("@Email", SqlDbType.VarChar).Value = Dato.Email;
             SentenciaSQL.Parameters.Add("@Contraseña", SqlDbType.VarChar).Value = Dato.Encriptar(Dato.Contraseña);
-            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.VarChar).Value =Dato.Imagen;
+            SentenciaSQL.Parameters.Add("@Imagen", SqlDbType.Image).Value =Dato.Imagen;
             SentenciaSQL.CommandType = CommandType.Text;
             return Conex.EjecutarComando(SentenciaSQL);
         }

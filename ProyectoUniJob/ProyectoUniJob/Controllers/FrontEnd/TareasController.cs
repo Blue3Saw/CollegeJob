@@ -28,7 +28,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         [ValidateAntiForgeryToken]
         public ActionResult AgregarTarea(string agregar, string modificar, string eliminar, string IdTarea, string NombreUsu, string Titulo, string Direccion,
             string Latitud, string Longitud, string FechaTarea, string HoraInicioTarea, string HoraFinTarea, string cmbClas, string Descripcion, string inputLabel,
-            string CantPersonas, IEnumerable<HttpPostedFileBase> Imagen)
+            string CantPersonas, HttpPostedFileBase[] Imagen)
         {
             TareasBO obj = new TareasBO();
             int A = Convert.ToInt32(agregar);
@@ -58,8 +58,19 @@ namespace ProyectoUniJob.Controllers.FrontEnd
            
             if (A > 0)
             {               
-                obj.Codigo = ObjDAO.AgregarTarea(obj);
-                AgregarImagenTarea(Imagen, obj.Codigo);
+                //obj.Codigo = ObjDAO.AgregarTarea(obj);
+                
+                FotosBO FotBO = new FotosBO();
+                FotosDAO fotdao = new FotosDAO();
+                FotBO.CodigoTarea=ObjDAO.AgregarTarea(obj);
+                //FotBO.CodigoTarea = fotdao.idinsetado();
+                for (int i = 0; i < Imagen.Length; i++)
+                {
+                    FotBO.Imagen = new byte[Imagen[i].ContentLength];
+                    Imagen[i].InputStream.Read(FotBO.Imagen, 0, Imagen[i].ContentLength);
+                    //AgregarImagenTarea(Imagen, obj.Codigo);
+                    fotdao.AgregarFoto(FotBO);
+                }
                 ViewBag.Script = "Agregado";
             }
             else if (M > 0)
@@ -68,27 +79,29 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
             return Redirect("/Usuario/IndexEmpleador#parentHorizontalTab2");
         }
-        public void AgregarImagenTarea(IEnumerable<HttpPostedFileBase> Imagen, int IdTarea)
-        {
-            FotosBO FotBO = new FotosBO();
-            FotosDAO DAOFotos = new FotosDAO();
-            FotBO.CodigoTarea = IdTarea;
-            if (Imagen != null)
-            {
-                foreach (var item in Imagen)
-                {
-                    var filename = Path.GetFileName(item.FileName);
-                    var path2 = Path.Combine(Server.MapPath("~/Recursos/FontEnd/images/"), filename);
-                    item.SaveAs(path2);
-                    FotBO.Imagen = filename;
-                    DAOFotos.AgregarFoto(FotBO);
-                }
-            }
-            else
-            {
-                FotBO.Imagen = "Ninguna";
-            }           
-        }
+        //public void AgregarImagenTarea(IEnumerable<HttpPostedFileBase> Imagen, int IdTarea)
+        //{
+        //    FotosBO FotBO = new FotosBO();
+        //    FotosDAO DAOFotos = new FotosDAO();
+        //    FotBO.CodigoTarea = IdTarea;
+        //    if (Imagen != null)
+        //    {
+        //        foreach ( var item in Imagen)
+        //        {
+        //            //var filename = Path.GetFileName(item.FileName);
+        //            //var path2 = Path.Combine(Server.MapPath("~/Recursos/FontEnd/images/"), filename);
+        //            //item.SaveAs(path2);
+        //            //FotBO.Imagen = filename;
+        //            //DAOFotos.AgregarFoto(FotBO);
+        //            //FotBO.Imagen = new byte[item.ContentLength];
+        //            //Imagen.InputStream.Read(bo.Imagen, 0, Imagen.ContentLength);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        FotBO.Imagen = "Ninguna";
+        //    }           
+        //}
 
         public ActionResult Upload(IEnumerable<HttpPostedFileBase> Imagen)
         {
@@ -170,9 +183,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
         {
             ViewData["Fecha"] = ObjDAO.BuscarFecha(Codigo);
             ViewData["permiso"] = Session["Permiso"].ToString();
-            int Clave=int.Parse(Codigo);
+            int Clave = int.Parse(Codigo);
+            //int Clave = 12;
             ViewData["Tarea"] = Clave;
             ViewData["Postulados"] = ObjDAO.postulados(Clave);
+            ViewData["Imagenes"] = ObjDAO.ImgenesTarea(Clave);
+            //ViewData["NFilas"] = ObjDAO.ImgenesTarea(Clave).Rows.Count;
             return View(ObjDAO.TareaSeleccionada(Clave));
         }
 

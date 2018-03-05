@@ -36,22 +36,22 @@
     <section class="creditly-wrapper wthree, w3_agileits_wrapper">
         <div class="credit-card-wrapper">
             <div class="first-row form-group">
-                <div class="row">
+                <div class="band">
                     @foreach (DataRow row in Model.Rows)
                     {
-                        <div class="col-md-4 movie-preview" onclick="location.href = '/Tareas/TareaSeleccionada?Codigo=@row["Codigo"]'" style="cursor:pointer">
-                            <div class="m-movie-title">
-                                <h4 class="m-movie-link" style="color:black;">@row["Titulo"]</h4>
-                                <div class="clearfix"></div>
-                                <div class="m-r-date">
+    
+                        <div class="item-5">
+                            <a href="/Tareas/TareaSeleccionada?Codigo=@row["Codigo"]" class="card">
+                                @{
+                                    string Foto = "data:image / jpeg; base64," + Convert.ToBase64String((byte[])row["Imagen"]);
+                                }
+                                <div class="thumb" style="background-image:url('@Foto');"></div>
+                                <article>
+                                    <h1>@row["Titulo"]</h1>
                                     <p>@row["Empleador"]</p>
                                     <p>@row["Clasificacion"]</p>
-                                </div>
-                                <div class="m-r-like">
-                                    @*@Html.ActionLink("Ver más", "TareaSeleccionada", "Tareas", new { Codigo = @row["Codigo"] }, null)*@
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                                </article>
+                            </a>
                         </div>
                     }
                 </div>
