@@ -55,6 +55,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
         public ActionResult AgregarEmp(string Nombre, string Apellidos, DateTime FechaNac, long Telefono, string Direccion, string Email, string Contraseña)
         {
+            
             UsuarioBO Datos = new UsuarioBO();
             Datos.Nombre = Nombre;
             Datos.Apellidos = Apellidos;
@@ -64,9 +65,16 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             Datos.Email = Email;
             Datos.Contraseña = Contraseña;
             Datos.TipoUsuario = 2;
-            //Datos.Imagen = "Hola.jpg";
-            ObjUsuario.AgregarEmpleador(Datos);
+            //Datos.Imagen = "";
 
+            //aqui esta el error ya que no devuelve bien la sesion v:
+            int proceso = ObjUsuario.AgregarEmpleador(Datos);
+            int sesion=ObjUsuario.BuscarId(Email);
+            Session["Codigo"] = sesion;
+            Session["Permiso"] = 2;
+            //5555555555555555555555555
+            Session["Filtro"] = 0;
+            Session["Nombre"] = Nombre + " " + Apellidos;
             ObjUsuario.LoginEmpleador(Datos);
             return RedirectToAction("IndexEmpleador", "Usuario");
         }
@@ -102,9 +110,22 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             int ActPerf = ObjUsuario.ActualizarUsuario2(bo);
             Session["ActPerf"] = ActPerf;
             ViewBag.ActPerf = Session["ActPerf"];
-            IndexEstudiante();
-            return View("IndexEstudiante");
+            //IndexEstudiante();
+            //return View("IndexEstudiante");
+
+            if (Session["Permiso"].ToString() == "3")
+            {
+                IndexEstudiante();
+                return View("IndexEstudiante");
+            }
+            else
+            {
+                IndexEmpleador();
+                return View("IndexEmpleador");
+            }
+
         }
+
 
         public ActionResult CerrarSesion()
         {

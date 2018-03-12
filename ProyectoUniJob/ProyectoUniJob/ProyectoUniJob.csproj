@@ -178,6 +178,7 @@
     <Content Include="Recursos\BackEnd\js\bootstrap.min.js" />
     <Content Include="Recursos\BackEnd\js\chartist.min.js" />
     <Content Include="Recursos\BackEnd\js\demo.js" />
+    <Content Include="Recursos\BackEnd\js\jPages.min.js" />
     <Content Include="Recursos\BackEnd\js\jquery-1.10.2.js" />
     <Content Include="Recursos\BackEnd\js\jquery-2.0.3.min.js" />
     <Content Include="Recursos\BackEnd\js\paper-dashboard.js" />

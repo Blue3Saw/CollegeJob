@@ -106,7 +106,7 @@ namespace DAO
         public int AceptarTarea2(int CodigoE, int CodigoT,int oferta)
         {
             TareasBO Dato = new TareasBO();
-            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO UsuariosTareas (CodigoEstudiante, CodigoTarea, Fecha,Precio,estado,CE) VALUES (@CodigoE, @CodigoT, @Fecha,@Precio,'Aceptar',0)");
+            SqlCommand SentenciaSQL = new SqlCommand("INSERT INTO UsuariosTareas (CodigoEstudiante, CodigoTarea, Fecha,Precio,estado,CE) VALUES (@CodigoE, @CodigoT, @Fecha,@Precio,'Pendiente',0)");
             SentenciaSQL.Parameters.Add("@CodigoE", SqlDbType.Int).Value = CodigoE;
             SentenciaSQL.Parameters.Add("@CodigoT", SqlDbType.Int).Value = CodigoT;
             SentenciaSQL.Parameters.Add("@Precio", SqlDbType.Int).Value = oferta;

@@ -35,3 +35,75 @@ text-overflow: ellipsis
  height: 200px;
 }
 
+
+
+.eng-container {
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    .eng-content {
+        float: left;
+        width: 33%;
+    }
+
+    #itemContainer li {
+        display: inline;
+        list-style-type: none;
+        padding-right: 20px;
+    }
+
+    .holder {
+        margin: 15px 0;
+    }
+
+        .holder a {
+            font-size: 12px;
+            cursor: pointer;
+            margin: 0 5px;
+            color: #333;
+        }
+
+            .holder a:hover {
+                background-color: #222;
+                color: #fff;
+            }
+
+            .holder a.jp-current, a.jp-current:hover {
+                color: #FF4242;
+                font-weight: bold;
+                cursor: default;
+                background: none;
+            }
+
+        .holder span {
+            margin: 0 5px;
+        }
+
+    .customBtns {
+        position: relative;
+    }
+
+    .arrowPrev, .arrowNext {
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        top: 55px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+    }
+
+    .arrowPrev {
+        background-image: url('http://files.softicons.com/download/toolbar-icons/16x16-free-toolbar-icons-by-aha-soft/png/16/arrow-left.png');
+        left: -45px;
+    }
+
+    .arrowNext {
+        background-image: url('http://files.softicons.com/download/toolbar-icons/16x16-free-toolbar-icons-by-aha-soft/png/16/arrow-right.png');
+        right: -40px;
+    }
+
+        .arrowPrev.jp-disabled, .arrowNext.jp-disabled {
+            display: none;
+        }
+

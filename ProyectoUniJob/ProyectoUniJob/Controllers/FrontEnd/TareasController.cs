@@ -345,5 +345,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
 
             return Redirect("/Usuario/IndexEstudiante#parentHorizontalTab3");
         }
+
+
+        public ActionResult Notificaciones()
+        {
+
+            return View();
+        }
     }
 }

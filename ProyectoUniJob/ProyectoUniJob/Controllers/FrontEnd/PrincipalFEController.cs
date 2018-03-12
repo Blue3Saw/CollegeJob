@@ -34,12 +34,12 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             {
                 Session["Codigo"] = ObjUsuario.LoginAdministrador(Datos);
                 Session["Nombre"] = ObjUsuario.Buscarnombre(Datos);
-                Session["Permiso"] = ObjUsuario.BuscarPermiso(Datos);
+                Session["Permiso"] = 1; /*ObjUsuario.BuscarPermiso(Datos)*/
                 return RedirectToAction("PaginaPrincipal", "Informacion");
             }
             else if (ObjUsuario.LoginEmpleador(Datos) > 0)
             {
-                Session["Permiso"] = ObjUsuario.BuscarPermiso(Datos);
+                Session["Permiso"] = 2;/*ObjUsuario.BuscarPermiso(Datos)*/
                 Session["Codigo"] = ObjUsuario.LoginEmpleador(Datos);
                 Session["msgadm"] = 1;
                 Session["Filtro"] = 0;
@@ -48,7 +48,7 @@ namespace ProyectoUniJob.Controllers.FrontEnd
             }
             else if (ObjUsuario.LoginEstudiante(Datos) > 0)
             {
-                Session["Permiso"] = ObjUsuario.BuscarPermiso(Datos);
+                Session["Permiso"] = 3; /*ObjUsuario.BuscarPermiso(Datos);*/
                 Session["Codigo"] = ObjUsuario.LoginEstudiante(Datos);
                 Session["msgadm"] = 2;
                 Session["Nombre"] = ObjUsuario.Buscarnombre(Datos);
